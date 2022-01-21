@@ -2,11 +2,7 @@
   "extends": "./tsconfig.paths.json",
   "compilerOptions": {
     "target": "ES2016",
-    "lib": [
-      "dom",
-      "esnext",
-      "dom.iterable",
-    ],
+    "lib": ["dom", "esnext", "dom.iterable"],
     "baseUrl": ".",
     "allowJs": true,
     "skipLibCheck": true,
@@ -29,7 +25,5 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": [
-    "."
-  ]
+  "include": ["."]
 }
