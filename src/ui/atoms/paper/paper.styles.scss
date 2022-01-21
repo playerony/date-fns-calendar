@@ -1,0 +1,93 @@
+@import '@infrastructure/styles/main';
+
+.paper-wrapper {
+  background-color: gray(300);
+  display: block;
+  position: relative;
+
+  &--padding {
+    &-xxs {
+      padding: spacing(xxs);
+    }
+
+    &-xs {
+      padding: spacing(xs);
+    }
+
+    &-xxs {
+      padding: spacing(xxs);
+    }
+
+    &-sm {
+      padding: spacing(sm);
+    }
+
+    &-md {
+      padding: spacing(md);
+    }
+
+    &-lg {
+      padding: spacing(lg);
+    }
+
+    &-xl {
+      padding: spacing(xl);
+    }
+
+    &-2xl {
+      padding: spacing(2xl);
+    }
+  }
+
+  &--shadow {
+    &-sm {
+      box-shadow: shadow(sm);
+    }
+
+    &-md {
+      box-shadow: shadow(md);
+    }
+
+    &-lg {
+      box-shadow: shadow(lg);
+    }
+
+    &-xl {
+      box-shadow: shadow(xl);
+    }
+
+    &-none {
+      box-shadow: none;
+    }
+  }
+
+  &--border-radius {
+    &-xxs {
+      border-radius: border-radius(xxs);
+    }
+
+    &-xs {
+      border-radius: border-radius(xs);
+    }
+
+    &-sm {
+      border-radius: border-radius(sm);
+    }
+
+    &-md {
+      border-radius: border-radius(md);
+    }
+
+    &-lg {
+      border-radius: border-radius(lg);
+    }
+
+    &-xl {
+      border-radius: border-radius(xl);
+    }
+
+    &-2xl {
+      border-radius: border-radius(2xl);
+    }
+  }
+}

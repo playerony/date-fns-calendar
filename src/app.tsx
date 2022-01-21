@@ -1,12 +1,33 @@
-import { Typography } from '@ui';
+import { getDate } from 'date-fns';
 
-export const App = () => (
-  <>
-    <Typography as="h1">Heading 1</Typography>
-    <Typography as="h2">Heading 2</Typography>
-    <Typography as="h3">Heading 3</Typography>
-    <Typography as="h4">Heading 4</Typography>
-    <Typography as="h5">Heading 5</Typography>
-    <Typography as="h6">Heading 6</Typography>
-  </>
-);
+import { Paper, Divider, Typography } from '@ui';
+
+import { generateMonth } from '@utils';
+
+export const App = () => {
+  const currentMonth = generateMonth();
+
+  return (
+    <div
+      style={{
+        padding: '0.5rem',
+        display: 'grid',
+        gridTemplateColumns: 'repeat(7, 1fr)',
+        gap: '0.5em',
+      }}
+    >
+      {currentMonth.map((_currentWeek) => (
+        <>
+          {_currentWeek.map((_currentDay) => (
+            <Paper shadow="sm" padding="sm" style={{ height: '15em' }}>
+              <Typography as="h2" color="primary">
+                {getDate(_currentDay)}
+              </Typography>
+              <Divider />
+            </Paper>
+          ))}
+        </>
+      ))}
+    </div>
+  );
+};
