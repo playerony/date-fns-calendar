@@ -5,6 +5,7 @@
   "scripts": {
     "build": "craco build",
     "check-all": "yarn lint && yarn test && yarn build && yarn format:check && yarn typecheck && yarn commitlint && yarn stylelint",
+    "commitlint": "commitlint --from=HEAD~1",
     "create-component": "plop --plopfile ./scripts/plop/create-component/create-component.js",
     "create-function": "plop --plopfile ./scripts/plop/create-function/create-function.js",
     "create-hook": "plop --plopfile ./scripts/plop/create-hook/create-hook.js",
