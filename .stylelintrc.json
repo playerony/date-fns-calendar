@@ -1,0 +1,14 @@
+{
+  "extends": "stylelint-config-sass-guidelines",
+  "ignoreFiles": ["**/*.js", "**/*.jsx", "**/*.ts", "**/*.tsx", "**/*.html"],
+  "rules": {
+    "selector-max-id": 1,
+    "max-nesting-depth": null,
+    "selector-class-pattern": null,
+    "scss/at-function-pattern": null,
+    "selector-no-vendor-prefix": null,
+    "scss/dollar-variable-pattern": null,
+    "selector-max-compound-selectors": null,
+    "declaration-property-value-disallowed-list": null
+  }
+}

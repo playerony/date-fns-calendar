@@ -1,0 +1,109 @@
+{
+  "name": "date-fns-calendar",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "start": "craco start",
+    "check-all": "yarn lint && yarn test && yarn build && yarn format:check && yarn typecheck && yarn commitlint && yarn stylelint",
+    "create-component": "plop --plopfile ./scripts/plop/create-component/create-component.js",
+    "create-function": "plop --plopfile ./scripts/plop/create-function/create-function.js",
+    "create-hook": "plop --plopfile ./scripts/plop/create-hook/create-hook.js",
+    "docker:build": "docker build -t amperio-partners .",
+    "docker:run": "docker run -p 8080:80 amperio-partners",
+    "build": "craco build",
+    "eject": "react-scripts eject",
+    "format": "yarn prettier --write",
+    "format:check": "yarn prettier --check",
+    "gcb": "bash ./scripts/shell/git-create-branch.sh",
+    "gcmwp": "bash ./scripts/shell/git-checkout-main-with-pull.sh",
+    "gpc": "bash ./scripts/shell/git-push-changes.sh",
+    "grlc": "bash ./scripts/shell/git-reset-local-changes.sh",
+    "lint": "eslint .",
+    "lint:fix": "yarn lint --fix",
+    "open:coverage": "yarn test:coverage && open ./coverage/lcov-report/index.html",
+    "prepare": "husky install",
+    "reinstall-node-modules": "bash ./scripts/shell/reinstall-node-modules.sh",
+    "stylelint": "npx stylelint \"**/*.scss\"",
+    "stylelint:fix": "yarn run stylelint --fix",
+    "test": "REACT_APP_ENV=test jest",
+    "test:ci": "REACT_APP_ENV=test jest --ci --coverage --forceExit",
+    "test:coverage": "REACT_APP_ENV=test jest --coverage",
+    "test:update-snapshot": "REACT_APP_ENV=test jest --updateSnapshot",
+    "test:watch": "REACT_APP_ENV=test jest --watch",
+    "prettier": "prettier \"**/*.+(js|jsx|ts|tsx|json)\"",
+    "typecheck": "tsc --noEmit -p . --pretty"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.16.1",
+    "@testing-library/react": "^12.1.2",
+    "@testing-library/user-event": "^13.5.0",
+    "react-scripts": "5.0.0",
+    "typescript": "^4.5.5",
+    "@types/jest": "^27.4.0",
+    "@types/node": "^17.0.10",
+    "@types/react": "^17.0.38",
+    "@types/react-dom": "^17.0.11",
+    "@commitlint/cli": "^16.1.0",
+    "@commitlint/config-conventional": "^16.0.0",
+    "@craco/craco": "^6.4.3",
+    "craco-alias": "^3.0.1",
+    "eslint": "^8.7.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-airbnb-typescript": "^16.1.0",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-react": "^7.28.0",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "eslint-plugin-unicorn": "^40.1.0",
+    "husky": "^7.0.4",
+    "inquirer-directory": "^2.2.0",
+    "jest": "^27.4.7",
+    "jest-module-name-mapper": "^0.1.5",
+    "jest-transform-stub": "^2.0.0",
+    "jsdom": "^19.0.0",
+    "lint-staged": "^12.2.2",
+    "plop": "^3.0.5",
+    "prettier": "^2.5.1",
+    "prettier-package-json": "^2.6.0",
+    "stylelint": "^14.2.0",
+    "stylelint-config-sass-guidelines": "^9.0.1",
+    "ts-jest": "^27.1.3",
+    "yarnhook": "^0.5.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": "yarn test",
+      "pre-commit": "lint-staged && yarn test",
+      "post-checkout": "yarn yarnhook",
+      "post-merge": "yarn yarnhook",
+      "post-rewrite": "yarn yarnhook"
+    }
+  },
+  "volta": {
+    "node": "16.13.2",
+    "yarn": "1.22.17"
+  }
+}
