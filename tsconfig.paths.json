@@ -2,18 +2,12 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@utils/*": [
-        "./src/utils/*"
-      ],
-      "@utils": [
-        "./src/utils"
-      ],
-      "@infrastructure/*": [
-        "./src/infrastructure/*"
-      ],
-      "@infrastructure": [
-        "./src/infrastructure"
-      ]
+      "@ui/*": ["./src/ui/*"],
+      "@ui": ["./src/ui"],
+      "@utils/*": ["./src/utils/*"],
+      "@utils": ["./src/utils"],
+      "@infrastructure/*": ["./src/infrastructure/*"],
+      "@infrastructure": ["./src/infrastructure"]
     }
   }
 }

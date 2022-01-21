@@ -1,0 +1,99 @@
+@import '../main';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  height: auto;
+  max-width: 100%;
+}
+
+#root {
+  background-color: palette(background);
+  display: block;
+  height: 100vh;
+  position: relative;
+  width: 100vw;
+}
+
+button {
+  @include placeholder-size(map-get($placeholder-size, md));
+  font-weight: bold;
+}
+
+p {
+  @include font-size(map-get($font-size, xxs));
+}
+
+label {
+  @include font-size(map-get($font-size, md));
+}
+
+h1 {
+  @include heading-size(map-get($heading-size, h1));
+}
+
+h2 {
+  @include heading-size(map-get($heading-size, h2));
+}
+
+h3 {
+  @include heading-size(map-get($heading-size, h3));
+}
+
+h4 {
+  @include heading-size(map-get($heading-size, h4));
+}
+
+h5 {
+  @include heading-size(map-get($heading-size, h5));
+}
+
+h6 {
+  @include heading-size(map-get($heading-size, h6));
+}
+
+/* Works on Firefox */
+* {
+  scrollbar-color: palette(primary) transparent;
+  scrollbar-width: thin;
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  height: 6px;
+  width: 6px;
+
+  @include breakpoint(sm) {
+    height: 5px;
+    width: 5px;
+  }
+
+  @include breakpoint(sm) {
+    height: 4px;
+    width: 4px;
+  }
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: palette(primary);
+  border: 3px solid transparent;
+  border-radius: 20px;
+}

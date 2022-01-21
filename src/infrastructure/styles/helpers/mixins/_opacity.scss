@@ -1,0 +1,15 @@
+@mixin opacity($value) {
+  $IEValue: $value * 100;
+  filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=' + $IEValue + ')';
+  filter: alpha(opacity=$IEValue);
+  opacity: $value;
+}
+
+// How To Use
+// img.preload{
+//     @include opacity(0);
+
+//     &.complete{
+//         @include opacity(1);
+//     }
+// }

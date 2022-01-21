@@ -1,0 +1,83 @@
+// $palette
+// Define app color palette
+$palette: (
+  palette: (
+    primary: #445ae8,
+    secondary: #00e8de,
+    cta: #445ae8,
+    primary-variant: #202a6a,
+    background: #ecf5fd,
+  ),
+  black: (
+    base: #191919,
+  ),
+  grayscale: (
+    900: #333,
+    800: #8c8c8c,
+    700: #d1d1d1,
+    600: #ddd,
+    500: #e8e8e8,
+    400: #f3f3f3,
+    300: #fcfcfc,
+  ),
+  system: (
+    success: #23d184,
+    error: #ff5c5c,
+    link: #3870ff,
+    warning: #ffba08,
+  ),
+);
+
+// ==========================================================================
+// Mapping colors function
+// ==========================================================================
+// ==========================================================================
+// Usage
+// ==========================================================================
+// .navbar {
+//   background-color: color(gray, base);
+// }
+// .navbar {
+//   background-color: gray(800);
+// }
+// .navbar {
+//   background-color: palette(primary);
+// }
+// .navbar {
+//   background-color: system(success);
+// }
+
+@function color($color, $tone) {
+  @warn map-get($palette, $color);
+
+  @if map-has-key($palette, $color) {
+    $color: map-get($palette, $color);
+
+    @if map-has-key($color, $tone) {
+      $tone: map-get($color, $tone);
+      @return $tone;
+    }
+
+    @warn 'unknown tone `#{$tone}` in color';
+    @return null;
+  }
+
+  @warn 'unknown color `#{$color}` in palette';
+  @return null;
+}
+
+@function gray($color) {
+  @return color(grayscale, $color);
+}
+
+@function system($color) {
+  @return color(system, $color);
+}
+
+@function palette($color) {
+  @return color(palette, $color);
+}
+
+@function black($tone: 'base') {
+  @return color(black, $tone);
+}

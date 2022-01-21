@@ -1,0 +1,151 @@
+@import '@infrastructure/styles/main';
+
+.typography-wrapper {
+  display: inline-block;
+  position: relative;
+
+  // variants
+  &--variant-p {
+    @include font-size(map-get($font-size, xxs));
+  }
+
+  &--variant-label {
+    @include font-size(map-get($font-size, md));
+  }
+
+  &--variant-h1 {
+    @include heading-size(map-get($heading-size, h1));
+    display: block;
+  }
+
+  &--variant-h2 {
+    @include heading-size(map-get($heading-size, h2));
+    display: block;
+  }
+
+  &--variant-h3 {
+    @include heading-size(map-get($heading-size, h3));
+    display: block;
+  }
+
+  &--variant-h4 {
+    @include heading-size(map-get($heading-size, h4));
+    display: block;
+  }
+
+  &--variant-h5 {
+    @include heading-size(map-get($heading-size, h5));
+    display: block;
+  }
+
+  &--variant-h6 {
+    @include heading-size(map-get($heading-size, h6));
+    display: block;
+  }
+
+  // sizes
+  &--size-xxs {
+    @include font-size(map-get($font-size, xxs));
+  }
+
+  &--size-xs {
+    @include font-size(map-get($font-size, xs));
+  }
+
+  &--size-sm {
+    @include font-size(map-get($font-size, sm));
+  }
+
+  &--size-md {
+    @include font-size(map-get($font-size, md));
+  }
+
+  &--size-lg {
+    @include font-size(map-get($font-size, lg));
+  }
+
+  &--size-xl {
+    @include font-size(map-get($font-size, xl));
+  }
+
+  // colours
+  &--color-none {
+    color: transparent;
+  }
+
+  &--color-initial {
+    color: initial;
+  }
+
+  &--color-inherit {
+    color: inherit;
+  }
+
+  &--color-black,
+  &--color-default {
+    color: black();
+  }
+
+  &--color-white {
+    color: gray(300);
+  }
+
+  &--color-primary {
+    color: palette(primary);
+  }
+
+  &--color-secondary {
+    color: palette(secondary);
+  }
+
+  &--color-error {
+    color: system(error);
+  }
+
+  &--color-info {
+    color: system(link);
+  }
+
+  &--color-success {
+    color: system(success);
+  }
+
+  &--color-warning {
+    color: system(warning);
+  }
+
+  // display
+  &--display-block {
+    display: block;
+  }
+
+  &--display-inline-block {
+    display: inline-block;
+  }
+
+  // other
+  &--pointer {
+    cursor: pointer;
+  }
+
+  &--disabled {
+    @include opacity(0.5);
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  &--strong {
+    font-weight: bold;
+  }
+
+  &--italic {
+    font-style: italic;
+  }
+
+  &--ellipsis {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
