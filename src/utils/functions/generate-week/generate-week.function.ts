@@ -10,5 +10,5 @@ export const generateWeek = (date: Date = new Date()) => {
   const todayStartDate = startOfDay(date);
   const weekStartDate = startOfWeek(todayStartDate);
 
-  return [...Array(7)].map((_, _index) => addDays(weekStartDate, _index));
+  return [...Array.from({ length: 7 })].map((_, _index) => addDays(weekStartDate, _index));
 };
