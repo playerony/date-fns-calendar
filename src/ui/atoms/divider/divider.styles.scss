@@ -1,7 +1,7 @@
 @import '@infrastructure/styles/main';
 
 .divider-wrapper {
-  border-color: rgba(palette(primary), 0.5);
+  border-color: palette(primary);
   border-style: solid;
   border-width: 0 0 thin;
   display: block;
