@@ -7,7 +7,6 @@ import { generateMonth } from '@utils';
 
 export const App = () => {
   const currentMonth = generateMonth();
-  console.log(currentMonth);
 
   return (
     <div
