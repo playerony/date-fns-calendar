@@ -25,8 +25,8 @@ export const DesktopCalendarCard = ({
       className={classnames(
         'desktop-calendar-card-wrapper',
         today && 'desktop-calendar-card-wrapper--today',
-        !sameMonth && 'desktop-calendar-card-wrapper--other-month',
         weekend && 'desktop-calendar-card-wrapper--weekend',
+        !sameMonth && 'desktop-calendar-card-wrapper--other-month',
       )}
     >
       <Typography as="h2" color="primary">
