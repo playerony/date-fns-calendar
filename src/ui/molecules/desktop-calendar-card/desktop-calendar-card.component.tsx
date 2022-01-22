@@ -1,5 +1,5 @@
-import { Children } from 'react';
 import classnames from 'classnames';
+import { memo, Children } from 'react';
 import { getDate, isToday, isWeekend } from 'date-fns';
 
 import { Paper, Divider, Typography, CalendarEventLabel } from '@ui';
@@ -8,10 +8,12 @@ import { IDesktopCalendarCardProps } from './desktop-calendar-card.types';
 
 import './desktop-calendar-card.styles.scss';
 
-export const DesktopCalendarCard = ({
+const DesktopCalendarCardComponent = ({
   date,
   events,
+  selected,
   sameMonth,
+  ...restProps
 }: IDesktopCalendarCardProps): JSX.Element => {
   const formattedDate = getDate(date).toString().padStart(2, '0');
 
@@ -25,9 +27,11 @@ export const DesktopCalendarCard = ({
       className={classnames(
         'desktop-calendar-card-wrapper',
         today && 'desktop-calendar-card-wrapper--today',
+        selected && 'desktop-calendar-card-wrapper--today',
         weekend && 'desktop-calendar-card-wrapper--weekend',
         !sameMonth && 'desktop-calendar-card-wrapper--other-month',
       )}
+      {...restProps}
     >
       <Typography as="h2" color="primary">
         {formattedDate}
@@ -39,3 +43,5 @@ export const DesktopCalendarCard = ({
     </Paper>
   );
 };
+
+export const DesktopCalendarCard = memo(DesktopCalendarCardComponent);

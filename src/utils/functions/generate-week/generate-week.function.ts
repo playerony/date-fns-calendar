@@ -1,6 +1,6 @@
 import { addDays, startOfDay, startOfWeek } from 'date-fns';
 
-import { isDate } from '@utils';
+import { isDate, generateDatesArray } from '@utils';
 
 export const generateWeek = (date: Date = new Date()) => {
   if (!isDate(date)) {
@@ -10,5 +10,5 @@ export const generateWeek = (date: Date = new Date()) => {
   const todayStartDate = startOfDay(date);
   const weekStartDate = startOfWeek(todayStartDate, { weekStartsOn: 1 });
 
-  return [...Array.from({ length: 7 })].map((_, _index) => addDays(weekStartDate, _index));
+  return generateDatesArray(weekStartDate, addDays(weekStartDate, 7));
 };
