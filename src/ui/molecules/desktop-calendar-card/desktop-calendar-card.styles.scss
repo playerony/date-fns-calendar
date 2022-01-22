@@ -1,0 +1,30 @@
+@import '@infrastructure/styles/main';
+
+.desktop-calendar-card-wrapper {
+  display: block;
+  height: 15em;
+  position: relative;
+
+  &--today {
+    border: 3px solid palette(primary);
+  }
+
+  &--other-month {
+    background-color: gray(400);
+  }
+
+  &--other-month,
+  &--weekend {
+    > .typography-wrapper {
+      color: gray(600);
+    }
+
+    > .divider-wrapper {
+      border-color: gray(600);
+    }
+  }
+
+  &__events {
+    margin-top: spacing(xs);
+  }
+}

@@ -1,0 +1,13 @@
+@import '@infrastructure/styles/main';
+
+.calendar-event-label-wrapper {
+  cursor: pointer;
+  display: block;
+  padding: spacing(xxs);
+  position: relative;
+  transition: background-color 0.2s ease-in-out;
+
+  &:hover {
+    background-color: gray(500);
+  }
+}
