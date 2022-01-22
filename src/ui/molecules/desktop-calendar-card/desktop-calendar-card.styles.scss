@@ -1,12 +1,18 @@
 @import '@infrastructure/styles/main';
 
 .desktop-calendar-card-wrapper {
+  border: 3px solid transparent;
   display: block;
   height: 15em;
   position: relative;
+  transition: border-color 0.1s ease-in-out;
+
+  &:hover {
+    border-color: palette(secondary);
+  }
 
   &--today {
-    border: 3px solid palette(primary);
+    border-color: palette(primary);
   }
 
   &--other-month {
