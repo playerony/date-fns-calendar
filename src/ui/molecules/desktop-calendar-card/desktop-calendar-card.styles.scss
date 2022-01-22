@@ -1,6 +1,7 @@
 @import '@infrastructure/styles/main';
 
 .desktop-calendar-card-wrapper {
+  @include unselectable;
   border: 3px solid transparent;
   display: block;
   height: 15em;

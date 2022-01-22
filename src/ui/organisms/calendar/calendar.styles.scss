@@ -1,0 +1,17 @@
+@import '@infrastructure/styles/main';
+
+.calendar-wrapper {
+  display: block;
+  position: relative;
+
+  &__calendar {
+    display: grid;
+    gap: spacing(xs);
+    grid-template-columns: repeat(5, 1fr);
+    padding: spacing(xs);
+
+    &--weekends {
+      grid-template-columns: repeat(7, 1fr);
+    }
+  }
+}
