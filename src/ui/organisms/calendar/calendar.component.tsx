@@ -7,6 +7,7 @@ import {
   isWeekend,
   isSameMonth,
 } from 'date-fns';
+import classnames from 'classnames';
 import { Children, useState } from 'react';
 
 import { Typography, DesktopCalendarCard } from '@ui';
@@ -67,19 +68,15 @@ export const Calendar = ({
 
   return (
     <div className="calendar-wrapper">
-      <Typography as="h2" strong>
-        <span onClick={onLeftArrowClick}>{'< '}</span>
-        <span onClick={onRightArrowClick}>{' >'}</span>
-        {`${getMonthNameById(getMonth(selectedDate))} ${getYear(selectedDate)}`}
-      </Typography>
+      <header className="calendar-wrapper__header">
+        <Typography as="h2" strong>
+          <span onClick={onLeftArrowClick}>{'< '}</span>
+          <span onClick={onRightArrowClick}>{' >'}</span>
+          {`${getMonthNameById(getMonth(selectedDate))} ${getYear(selectedDate)}`}
+        </Typography>
+      </header>
       <div
         id="calendar-wrapper"
-        style={{
-          padding: '0.5rem',
-          display: 'grid',
-          gridTemplateColumns: `repeat(${weekends ? 7 : 5}, 1fr)`,
-          gap: '0.5em',
-        }}
         onMouseUp={onMouseUp}
         onMouseDown={(event) => {
           // @ts-expect-error
@@ -88,6 +85,10 @@ export const Calendar = ({
             setSelectionStartDate(null);
           }
         }}
+        className={classnames(
+          'calendar-wrapper__calendar',
+          weekends && 'calendar-wrapper__calendar--weekends',
+        )}
       >
         {Children.toArray(
           currentMonth.map((_currentWeek) => (
