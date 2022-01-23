@@ -14,7 +14,7 @@ export const Dashboard = () => (
       { title: 'Chuck Norris', start: addDays(currentDate, 3) },
       { title: 'Chuck Norris', start: addDays(currentDate, -4) },
     ]}
-    mode="month"
+    mode="week"
     displayWeekends
     enableDateSelection
     onCalendarEventClick={(event) => console.log('onCalendarEventClick', event)}

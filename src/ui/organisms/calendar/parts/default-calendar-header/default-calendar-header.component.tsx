@@ -5,7 +5,7 @@ import { Button, Typography } from '@ui';
 
 import { getMonthNameById } from '@utils';
 
-import { IDefaultCalendarHeaderProps } from './default-calendar-header.types';
+import { ICalendarHeaderProps } from '../../calendar.types';
 
 import './default-calendar-header.styles.scss';
 
@@ -14,7 +14,7 @@ export const DefaultCalendarHeader = ({
   currentMonth,
   onLeftArrowClick,
   onRightArrowClick,
-}: IDefaultCalendarHeaderProps): JSX.Element => {
+}: ICalendarHeaderProps): JSX.Element => {
   const monthName = getMonthNameById(getMonth(currentMonth));
 
   return (
