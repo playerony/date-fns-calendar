@@ -5,7 +5,7 @@ import { getDate, isToday, isWeekend } from 'date-fns';
 import { Paper, Divider, Typography, CalendarEventLabel } from '@ui';
 
 import { ICalendarEvent } from '@interfaces';
-import { IMobileCalendarCardProps } from './mobile-calendar-card.types';
+import { ICalendarCardProps } from '../../calendar.types';
 
 import './mobile-calendar-card.styles.scss';
 
@@ -16,7 +16,7 @@ const MobileCalendarCardComponent = ({
   sameMonth,
   onCalendarEventClick,
   ...restProps
-}: IMobileCalendarCardProps): JSX.Element => {
+}: ICalendarCardProps): JSX.Element => {
   const formattedDate = getDate(date).toString().padStart(2, '0');
 
   const today = isToday(date);

@@ -10,8 +10,7 @@ import {
 import classnames from 'classnames';
 import { memo, Children, useState, useEffect, MouseEvent } from 'react';
 
-import { MobileCalendarCard, DesktopCalendarCard } from '@ui';
-import { DefaultCalendarHeader } from './parts';
+import { MobileCalendarCard, DesktopCalendarCard, DefaultCalendarHeader } from './parts';
 
 import { MEDIUM_SCREEN_BREAKPOINT } from '@infrastructure';
 import { generateWeek, generateMonth, generateDatesArray, useDeviceDetect } from '@utils';
@@ -22,6 +21,7 @@ import './calendar.styles.scss';
 
 const CalendarComponent = ({
   events,
+  components,
   mode = 'month',
   onCalendarEventClick,
   onSelectedDatesChange,
@@ -41,17 +41,23 @@ const CalendarComponent = ({
 
   const currentMonth = generateMonth(selectedDate);
 
+  const { Header = DefaultCalendarHeader } = components || {};
+
   useEffect(() => {
     if (onSelectedDatesChange) {
       onSelectedDatesChange(selectedDates);
     }
-  }, [selectedDates]);
+  }, [JSON.stringify(selectedDates)]);
 
   useEffect(() => {
     if (customSelectedDates) {
       setSelectedDates(customSelectedDates);
     }
   }, [customSelectedDates]);
+
+  useEffect(() => {
+    setSelectedDates([]);
+  }, [shouldRenderMobileCards]);
 
   const onRightArrowClick = () => {
     const functionToExecute = isOneWeekMode ? addWeeks : addMonths;
@@ -98,10 +104,11 @@ const CalendarComponent = ({
   const getEventsForDate = (date: Date) => events.filter((_event) => isSameDay(_event.start, date));
 
   const dataToProcess = isOneWeekMode ? [generateWeek(selectedDate)] : currentMonth;
+  const CalendarCard = shouldRenderMobileCards ? MobileCalendarCard : DesktopCalendarCard;
 
   return (
     <div className="calendar-wrapper">
-      <DefaultCalendarHeader
+      <Header
         currentMonth={selectedDate}
         onLeftArrowClick={onLeftArrowClick}
         className="calendar-wrapper__header"
@@ -136,9 +143,6 @@ const CalendarComponent = ({
                   const currentDayEvents = getEventsForDate(_currentDay);
                   const sameMonth = isSameMonth(selectedDate, _currentDay);
                   const selected = selectedDates.some((_date) => isSameDay(_date, _currentDay));
-                  const CalendarCard = shouldRenderMobileCards
-                    ? MobileCalendarCard
-                    : DesktopCalendarCard;
 
                   return (
                     <CalendarCard
