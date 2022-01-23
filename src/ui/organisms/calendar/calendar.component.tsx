@@ -1,6 +1,6 @@
 import {
-  getYear,
-  getMonth,
+  addWeeks,
+  subWeeks,
   addMonths,
   subMonths,
   isSameDay,
@@ -8,40 +8,69 @@ import {
   isSameMonth,
 } from 'date-fns';
 import classnames from 'classnames';
-import { Children, useState } from 'react';
+import { memo, Children, useState, useEffect, MouseEvent } from 'react';
 
-import { Typography, DesktopCalendarCard } from '@ui';
+import { MobileCalendarCard, DesktopCalendarCard } from '@ui';
+import { DefaultCalendarHeader } from './parts';
 
-import { generateMonth, getMonthNameById, generateDatesArray } from '@utils';
+import { MEDIUM_SCREEN_BREAKPOINT } from '@infrastructure';
+import { generateWeek, generateMonth, generateDatesArray, useDeviceDetect } from '@utils';
 
 import { ICalendarProps } from './calendar.types';
 
 import './calendar.styles.scss';
 
-export const Calendar = ({
-  weekends = true,
-  dateSelection = true,
+const CalendarComponent = ({
+  events,
+  mode = 'month',
+  onCalendarEventClick,
+  onSelectedDatesChange,
+  displayWeekends = true,
+  defaultSelectedDates = [],
+  enableDateSelection = true,
+  defaultSelectedDate = new Date(),
+  selectedDates: customSelectedDates,
 }: ICalendarProps): JSX.Element => {
-  const [selectedDate, setSelectedDate] = useState(new Date());
-  const [selectedDates, setSelectedDates] = useState<Date[]>([]);
+  const [selectedDate, setSelectedDate] = useState(defaultSelectedDate);
   const [selectionStartDate, setSelectionStartDate] = useState<Date | null>(null);
+  const [selectedDates, setSelectedDates] = useState<Date[]>(defaultSelectedDates);
+
+  const { windowSize } = useDeviceDetect();
+  const shouldRenderMobileCards = windowSize.width < MEDIUM_SCREEN_BREAKPOINT;
+  const isOneWeekMode = mode === 'week' || shouldRenderMobileCards;
 
   const currentMonth = generateMonth(selectedDate);
 
+  useEffect(() => {
+    if (onSelectedDatesChange) {
+      onSelectedDatesChange(selectedDates);
+    }
+  }, [selectedDates]);
+
+  useEffect(() => {
+    if (customSelectedDates) {
+      setSelectedDates(customSelectedDates);
+    }
+  }, [customSelectedDates]);
+
   const onRightArrowClick = () => {
-    const newSelectedDate = addMonths(selectedDate, 1);
+    const functionToExecute = isOneWeekMode ? addWeeks : addMonths;
+    const newSelectedDate = functionToExecute(selectedDate, 1);
 
     setSelectedDate(newSelectedDate);
   };
 
   const onLeftArrowClick = () => {
-    const newSelectedDate = subMonths(selectedDate, 1);
+    const functionToExecute = isOneWeekMode ? subWeeks : subMonths;
+    const newSelectedDate = functionToExecute(selectedDate, 1);
 
     setSelectedDate(newSelectedDate);
   };
 
-  const onMouseDown = (date: Date) => () => {
-    if (!dateSelection) {
+  const onMouseDown = (date: Date) => (event: MouseEvent) => {
+    if (event.currentTarget !== event.target) return;
+
+    if (!enableDateSelection) {
       return;
     }
 
@@ -50,7 +79,7 @@ export const Calendar = ({
   };
 
   const onMouseUp = () => {
-    if (!dateSelection) {
+    if (!enableDateSelection) {
       return;
     }
 
@@ -58,7 +87,7 @@ export const Calendar = ({
   };
 
   const onMouseOver = (date: Date) => () => {
-    if (!dateSelection || !selectionStartDate) {
+    if (!enableDateSelection || !selectionStartDate) {
       return;
     }
 
@@ -66,15 +95,18 @@ export const Calendar = ({
     setSelectedDates([selectionStartDate, ...generatedDatesArray, date]);
   };
 
+  const getEventsForDate = (date: Date) => events.filter((_event) => isSameDay(_event.start, date));
+
+  const dataToProcess = isOneWeekMode ? [generateWeek(selectedDate)] : currentMonth;
+
   return (
     <div className="calendar-wrapper">
-      <header className="calendar-wrapper__header">
-        <Typography as="h2" strong>
-          <span onClick={onLeftArrowClick}>{'< '}</span>
-          <span onClick={onRightArrowClick}>{' >'}</span>
-          {`${getMonthNameById(getMonth(selectedDate))} ${getYear(selectedDate)}`}
-        </Typography>
-      </header>
+      <DefaultCalendarHeader
+        currentMonth={selectedDate}
+        onLeftArrowClick={onLeftArrowClick}
+        className="calendar-wrapper__header"
+        onRightArrowClick={onRightArrowClick}
+      />
       <div
         id="calendar-wrapper"
         onMouseUp={onMouseUp}
@@ -87,36 +119,37 @@ export const Calendar = ({
         }}
         className={classnames(
           'calendar-wrapper__calendar',
-          weekends && 'calendar-wrapper__calendar--weekends',
+          shouldRenderMobileCards && 'calendar-wrapper__calendar--mobile',
+          !shouldRenderMobileCards && displayWeekends && 'calendar-wrapper__calendar--weekends',
         )}
       >
         {Children.toArray(
-          currentMonth.map((_currentWeek) => (
+          dataToProcess.map((_currentWeek) => (
             <>
               {Children.toArray(
                 _currentWeek.map((_currentDay) => {
                   const weekend = isWeekend(_currentDay);
-                  if (weekend && !weekends) {
+                  if (weekend && !displayWeekends) {
                     return null;
                   }
 
+                  const currentDayEvents = getEventsForDate(_currentDay);
                   const sameMonth = isSameMonth(selectedDate, _currentDay);
                   const selected = selectedDates.some((_date) => isSameDay(_date, _currentDay));
+                  const CalendarCard = shouldRenderMobileCards
+                    ? MobileCalendarCard
+                    : DesktopCalendarCard;
 
                   return (
-                    <DesktopCalendarCard
+                    <CalendarCard
                       date={_currentDay}
                       selected={selected}
                       sameMonth={sameMonth}
                       onMouseUp={onMouseUp}
+                      events={currentDayEvents}
                       onMouseDown={onMouseDown(_currentDay)}
                       onMouseOver={onMouseOver(_currentDay)}
-                      onClick={(event) => event.preventDefault()}
-                      events={[
-                        { title: 'John Smith', start: new Date() },
-                        { title: 'John Smith', start: new Date() },
-                        { title: 'John Smith', start: new Date() },
-                      ]}
+                      onCalendarEventClick={onCalendarEventClick}
                     />
                   );
                 }),
@@ -128,3 +161,5 @@ export const Calendar = ({
     </div>
   );
 };
+
+export const Calendar = memo(CalendarComponent);

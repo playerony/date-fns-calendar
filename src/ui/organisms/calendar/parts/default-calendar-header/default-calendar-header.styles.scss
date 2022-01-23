@@ -1,0 +1,7 @@
+@import '@infrastructure/styles/main';
+
+.default-calendar-header-wrapper {
+  display: flex;
+  gap: spacing(sm);
+  position: relative;
+}
