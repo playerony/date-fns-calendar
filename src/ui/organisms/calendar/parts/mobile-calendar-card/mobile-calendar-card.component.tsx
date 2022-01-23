@@ -23,7 +23,7 @@ const MobileCalendarCardComponent = ({
   const weekend = isWeekend(date);
 
   const handleCalendarEventClick = (calendarEvent: ICalendarEvent) => () =>
-    onCalendarEventClick(calendarEvent);
+    onCalendarEventClick && onCalendarEventClick(calendarEvent);
 
   return (
     <Paper
