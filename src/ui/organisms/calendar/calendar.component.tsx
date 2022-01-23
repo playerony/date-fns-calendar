@@ -47,7 +47,7 @@ const CalendarComponent = ({
     if (onSelectedDatesChange) {
       onSelectedDatesChange(selectedDates);
     }
-  }, [selectedDates]);
+  }, [JSON.stringify(selectedDates)]);
 
   useEffect(() => {
     if (customSelectedDates) {
