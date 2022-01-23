@@ -10,6 +10,10 @@
     grid-template-columns: repeat(5, 1fr);
     padding: spacing(xs);
 
+    &--mobile {
+      grid-template-columns: auto;
+    }
+
     &--weekends {
       grid-template-columns: repeat(7, 1fr);
     }

@@ -16,6 +16,7 @@ export const generateMonth = (date: Date = new Date()) => {
   const monthLastDate = startOfDay(endOfWeek(endOfMonth(date)));
 
   result.push(generateWeek(startDate));
+
   while (lastDayOfRange(result) < monthLastDate) {
     startDate = addWeeks(startDate, 1);
 

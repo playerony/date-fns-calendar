@@ -1,0 +1,287 @@
+@import '@infrastructure/styles/main';
+
+.button-wrapper {
+  align-items: center;
+  appearance: none;
+  background-color: transparent;
+  border: 0;
+  border: 2px solid transparent;
+  box-sizing: border-box;
+  color: gray(300);
+  cursor: pointer;
+  display: block;
+  display: inline-flex;
+  font-family: 'Montserrat', sans-serif;
+  justify-content: center;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+  position: relative;
+  transition: all 250ms;
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+
+  &--variant {
+    &-contained {
+      &.button-wrapper--color-primary {
+        background-color: palette(primary);
+
+        * {
+          stroke: gray(300);
+        }
+
+        &:hover {
+          @include opacity(0.9);
+          background-color: palette(primary);
+        }
+      }
+
+      &.button-wrapper--color-secondary {
+        background-color: black();
+
+        * {
+          stroke: gray(300);
+        }
+
+        &:hover {
+          @include opacity(0.9);
+          background-color: black();
+        }
+      }
+
+      &.button-wrapper--color-inherit {
+        background-color: inherit;
+
+        * {
+          stroke: gray(300);
+        }
+
+        &:hover {
+          @include opacity(0.9);
+          background-color: inherit;
+        }
+      }
+
+      &.button-wrapper--color-success {
+        background-color: system(success);
+
+        * {
+          stroke: gray(300);
+        }
+
+        &:hover {
+          @include opacity(0.9);
+          background-color: system(success);
+        }
+      }
+
+      &.button-wrapper--color-error {
+        background-color: system(error);
+
+        * {
+          stroke: gray(300);
+        }
+
+        &:hover {
+          @include opacity(0.9);
+          background-color: system(error);
+        }
+      }
+
+      &.button-wrapper--color-warning {
+        background-color: system(warning);
+
+        * {
+          stroke: gray(300);
+        }
+
+        &:hover {
+          @include opacity(0.9);
+          background-color: system(warning);
+        }
+      }
+
+      &.button-wrapper--color-info {
+        background-color: system(link);
+
+        * {
+          stroke: gray(300);
+        }
+
+        &:hover {
+          @include opacity(0.9);
+          background-color: system(link);
+        }
+      }
+
+      &:disabled {
+        background-color: gray(700);
+        color: gray(300);
+
+        * {
+          stroke: gray(300);
+        }
+
+        &:hover {
+          background-color: gray(700);
+        }
+      }
+    }
+
+    &-outlined {
+      &.button-wrapper--color-primary {
+        border-color: palette(primary);
+        color: palette(primary);
+
+        * {
+          stroke: palette(primary);
+        }
+
+        &:hover {
+          background-color: rgba(palette(primary), 0.1);
+        }
+      }
+
+      &.button-wrapper--color-secondary {
+        border-color: black();
+        color: black();
+
+        * {
+          stroke: black();
+        }
+
+        &:hover {
+          background-color: rgba(black(), 0.1);
+        }
+      }
+
+      &.button-wrapper--color-inherit {
+        border-color: inherit;
+
+        * {
+          stroke: gray(300);
+        }
+
+        &:hover {
+          background-color: inherit;
+        }
+      }
+
+      &.button-wrapper--color-success {
+        border-color: system(success);
+        color: system(success);
+
+        * {
+          stroke: system(success);
+        }
+
+        &:hover {
+          background-color: rgba(system(success), 0.1);
+        }
+      }
+
+      &.button-wrapper--color-error {
+        border-color: system(error);
+        color: system(error);
+
+        * {
+          stroke: system(error);
+        }
+
+        &:hover {
+          background-color: rgba(system(error), 0.1);
+        }
+      }
+
+      &.button-wrapper--color-warning {
+        border-color: system(warning);
+        color: system(warning);
+
+        * {
+          stroke: system(warning);
+        }
+
+        &:hover {
+          background-color: rgba(system(warning), 0.1);
+        }
+      }
+
+      &.button-wrapper--color-info {
+        border-color: system(link);
+        color: system(link);
+
+        * {
+          stroke: system(link);
+        }
+
+        &:hover {
+          background-color: rgba(system(link), 0.1);
+        }
+      }
+
+      &:disabled {
+        color: gray(700);
+
+        * {
+          stroke: gray(700);
+        }
+      }
+    }
+  }
+
+  // sizes
+  &--size-small {
+    @include font-size(map-get($font-size, sm));
+    border-radius: border-radius(lg);
+    padding: spacing(xxs) spacing(md);
+  }
+
+  &--size-medium {
+    @include font-size(map-get($font-size, sm));
+    border-radius: border-radius(xl);
+    padding: 10px spacing(lg);
+  }
+
+  &--size-large {
+    @include font-size(map-get($font-size, md));
+    border-radius: border-radius(2xl);
+    padding: spacing(sm) spacing(lg);
+  }
+
+  // border-radius
+  &--border-radius {
+    &-none {
+      border-radius: 0;
+    }
+
+    &-xxs {
+      border-radius: border-radius(xxs);
+    }
+
+    &-xs {
+      border-radius: border-radius(xs);
+    }
+
+    &-sm {
+      border-radius: border-radius(sm);
+    }
+
+    &-md {
+      border-radius: border-radius(md);
+    }
+
+    &-lg {
+      border-radius: border-radius(lg);
+    }
+
+    &-xl {
+      border-radius: border-radius(xl);
+    }
+
+    &-2xl {
+      border-radius: border-radius(2xl);
+    }
+  }
+}

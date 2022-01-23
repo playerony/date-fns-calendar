@@ -1,10 +1,10 @@
 @import '@infrastructure/styles/main';
 
-.desktop-calendar-card-wrapper {
+.mobile-calendar-card-wrapper {
   @include unselectable;
   border: 3px solid transparent;
-  display: block;
-  height: 15em;
+  display: flex;
+  height: 10em;
   position: relative;
   transition: border-color 0.1s ease-in-out;
 
@@ -19,16 +19,24 @@
 
   &--other-month,
   &--weekend {
-    > .typography-wrapper {
+    > .mobile-calendar-card-wrapper__left-content > .typography-wrapper {
       color: gray(600);
     }
 
-    > .divider-wrapper {
+    > .mobile-calendar-card-wrapper__left-content > .divider-wrapper {
       border-color: gray(600);
     }
   }
 
   &__events {
     margin-top: spacing(xs);
+  }
+
+  &__left-content {
+    display: flex;
+
+    > .divider-wrapper {
+      margin: 0 spacing(sm);
+    }
   }
 }
