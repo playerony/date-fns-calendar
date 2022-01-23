@@ -22,23 +22,24 @@ export const Dashboard = () => (
         events={events}
         displayWeekends
         enableDateSelection
-        onCalendarEventClick={(event) => console.log('onCalendarEventClick', event)}
         onSelectedDatesChange={(selectedDates) =>
           console.log('onSelectedDatesChange', selectedDates)
         }
+        onCalendarEventClick={(event) => console.log('onCalendarEventClick', event)}
       />
     </div>
     <div>
-      <Typography as="h1">Month calendar without weekends and date selection</Typography>
+      <Typography as="h1">Month calendar without weekends, date selection and header</Typography>
       <Calendar
         mode="month"
         events={events}
         displayWeekends={false}
         enableDateSelection={false}
-        onCalendarEventClick={(event) => console.log('onCalendarEventClick', event)}
+        components={{ Header: () => null }}
         onSelectedDatesChange={(selectedDates) =>
           console.log('onSelectedDatesChange', selectedDates)
         }
+        onCalendarEventClick={(event) => console.log('onCalendarEventClick', event)}
       />
     </div>
     <div>
@@ -48,10 +49,10 @@ export const Dashboard = () => (
         events={events}
         displayWeekends
         enableDateSelection
-        onCalendarEventClick={(event) => console.log('onCalendarEventClick', event)}
         onSelectedDatesChange={(selectedDates) =>
           console.log('onSelectedDatesChange', selectedDates)
         }
+        onCalendarEventClick={(event) => console.log('onCalendarEventClick', event)}
       />
     </div>
   </>

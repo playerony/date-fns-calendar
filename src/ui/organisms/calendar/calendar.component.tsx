@@ -104,7 +104,6 @@ const CalendarComponent = ({
   const getEventsForDate = (date: Date) => events.filter((_event) => isSameDay(_event.start, date));
 
   const dataToProcess = isOneWeekMode ? [generateWeek(selectedDate)] : currentMonth;
-
   const CalendarCard = shouldRenderMobileCards ? MobileCalendarCard : DesktopCalendarCard;
 
   return (
