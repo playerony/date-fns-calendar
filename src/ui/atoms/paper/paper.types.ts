@@ -4,7 +4,6 @@ type TSize = 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
 
 export interface IPaperProps extends HTMLAttributes<HTMLDivElement> {
   borderRadius?: TSize;
-
   children: ReactNode;
   className?: string;
   padding?: TSize;
