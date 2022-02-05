@@ -1,4 +1,4 @@
-import { useRef, useEffect, MutableRefObject } from 'react';
+import { MutableRefObject, useEffect, useRef } from 'react';
 
 export function useEventListener<K extends keyof WindowEventMap>(
   eventName: K,
@@ -13,6 +13,7 @@ export function useEventListener<K extends keyof WindowEventMap>(
 
   useEffect(() => {
     const isSupported = element && element.addEventListener;
+
     if (!isSupported) return;
 
     const eventListener = (event: WindowEventMap[K]) => {

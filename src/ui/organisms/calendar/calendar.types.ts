@@ -3,9 +3,9 @@ import { HTMLAttributes } from 'react';
 import { ICalendarEvent } from '@interfaces';
 
 export interface ICalendarHeaderProps {
-  currentMonth: Date;
-
   className?: string;
+
+  currentMonth: Date;
 
   onLeftArrowClick: () => void;
   onRightArrowClick: () => void;
@@ -13,11 +13,11 @@ export interface ICalendarHeaderProps {
 
 export interface ICalendarCardProps extends HTMLAttributes<HTMLDivElement> {
   date: Date;
-  selected: boolean;
-  sameMonth: boolean;
   events: ICalendarEvent[];
-
   onCalendarEventClick?: (calendarEvent: ICalendarEvent) => void;
+  sameMonth: boolean;
+
+  selected: boolean;
 }
 
 interface IComponents {
@@ -25,15 +25,15 @@ interface IComponents {
 }
 
 export interface ICalendarProps {
-  events: ICalendarEvent[];
-
-  selectedDates?: Date[];
-  mode?: 'week' | 'month';
   components?: IComponents;
+
   defaultSelectedDate?: Date;
-  displayWeekends?: boolean;
   defaultSelectedDates?: Date[];
+  displayWeekends?: boolean;
   enableDateSelection?: boolean;
-  onSelectedDatesChange?: (selectedDates: Date[]) => void;
+  events: ICalendarEvent[];
+  mode?: 'week' | 'month';
   onCalendarEventClick?: (calendarEvent: ICalendarEvent) => void;
+  onSelectedDatesChange?: (selectedDates: Date[]) => void;
+  selectedDates?: Date[];
 }

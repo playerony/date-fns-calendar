@@ -1,17 +1,16 @@
 import classnames from 'classnames';
-import { memo, forwardRef, ForwardedRef } from 'react';
-
-import { IButtonProps } from './button.types';
+import { ForwardedRef, forwardRef, memo } from 'react';
 
 import './button.styles.scss';
+import { IButtonProps } from './button.types';
 
 const ButtonComponent = (
   {
+    borderRadius = 'md',
     children,
     className,
-    size = 'medium',
     color = 'primary',
-    borderRadius = 'md',
+    size = 'medium',
     variant = 'contained',
     ...restProps
   }: IButtonProps,

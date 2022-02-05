@@ -1,17 +1,16 @@
 import classnames from 'classnames';
-import { memo, forwardRef, ForwardedRef } from 'react';
-
-import { IPaperProps } from './paper.types';
+import { ForwardedRef, forwardRef, memo } from 'react';
 
 import './paper.styles.scss';
+import { IPaperProps } from './paper.types';
 
 const PaperComponent = (
   {
+    borderRadius = 'sm',
     children,
     className,
-    shadow = 'sm',
     padding = 'sm',
-    borderRadius = 'sm',
+    shadow = 'sm',
     ...restProps
   }: IPaperProps,
   ref: ForwardedRef<HTMLDivElement>,

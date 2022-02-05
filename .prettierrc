@@ -3,5 +3,24 @@
   "useTabs": false,
   "printWidth": 100,
   "singleQuote": true,
-  "trailingComma": "all"
+  "trailingComma": "all",
+  "importOrder": [
+    "<THIRD_PARTY_MODULES>",
+    "^@application",
+    "^@application/(.*)$",
+    "^@domain",
+    "^@domain/(.*)$",
+    "^@ui",
+    "^@ui/(.*)$",
+    "^@utils",
+    "^@utils/(.*)$",
+    "^@infrastructure",
+    "^@infrastructure/(.*)$",
+    "^@enums",
+    "^@interfaces",
+    "^[./]"
+  ],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true,
+  "importOrderGroupNamespaceSpecifiers": true
 }

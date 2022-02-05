@@ -1,12 +1,11 @@
 import classnames from 'classnames';
-import { getYear, getMonth } from 'date-fns';
+import { getMonth, getYear } from 'date-fns';
 
 import { Button, Typography } from '@ui';
 
 import { getMonthNameById } from '@utils';
 
 import { ICalendarHeaderProps } from '../../calendar.types';
-
 import './default-calendar-header.styles.scss';
 
 export const DefaultCalendarHeader = ({
@@ -25,7 +24,7 @@ export const DefaultCalendarHeader = ({
       <Button size="small" onClick={onRightArrowClick}>
         Next
       </Button>
-      <Typography as="h2" strong>
+      <Typography strong as="h2">
         {`${monthName} ${getYear(currentMonth)}`}
       </Typography>
     </div>

@@ -1,20 +1,20 @@
 import classnames from 'classnames';
-import { memo, Children } from 'react';
 import { getDate, isToday, isWeekend } from 'date-fns';
+import { Children, memo } from 'react';
 
-import { Paper, Divider, Typography, CalendarEventLabel } from '@ui';
+import { CalendarEventLabel, Divider, Paper, Typography } from '@ui';
 
 import { ICalendarEvent } from '@interfaces';
-import { ICalendarCardProps } from '../../calendar.types';
 
+import { ICalendarCardProps } from '../../calendar.types';
 import './mobile-calendar-card.styles.scss';
 
 const MobileCalendarCardComponent = ({
   date,
   events,
-  selected,
-  sameMonth,
   onCalendarEventClick,
+  sameMonth,
+  selected,
   ...restProps
 }: ICalendarCardProps): JSX.Element => {
   const formattedDate = getDate(date).toString().padStart(2, '0');
@@ -27,8 +27,6 @@ const MobileCalendarCardComponent = ({
 
   return (
     <Paper
-      shadow="sm"
-      padding="sm"
       className={classnames(
         'mobile-calendar-card-wrapper',
         today && 'mobile-calendar-card-wrapper--today',
@@ -36,6 +34,8 @@ const MobileCalendarCardComponent = ({
         selected && 'mobile-calendar-card-wrapper--selected',
         !sameMonth && 'mobile-calendar-card-wrapper--other-month',
       )}
+      padding="sm"
+      shadow="sm"
       {...restProps}
     >
       <span className="mobile-calendar-card-wrapper__left-content">
