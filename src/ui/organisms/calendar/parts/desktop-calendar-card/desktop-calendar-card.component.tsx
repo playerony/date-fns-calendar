@@ -7,6 +7,7 @@ import { CalendarEventLabel, Divider, Paper, Typography } from '@ui';
 import { ICalendarEvent } from '@interfaces';
 
 import { ICalendarCardProps } from '../../calendar.types';
+
 import './desktop-calendar-card.styles.scss';
 
 const DesktopCalendarCardComponent = ({

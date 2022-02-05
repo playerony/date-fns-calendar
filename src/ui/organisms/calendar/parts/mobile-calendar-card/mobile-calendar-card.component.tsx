@@ -7,6 +7,7 @@ import { CalendarEventLabel, Divider, Paper, Typography } from '@ui';
 import { ICalendarEvent } from '@interfaces';
 
 import { ICalendarCardProps } from '../../calendar.types';
+
 import './mobile-calendar-card.styles.scss';
 
 const MobileCalendarCardComponent = ({

@@ -6,8 +6,9 @@ import { Typography } from '@ui';
 
 import { getLastNameInitials } from '@utils';
 
-import './calendar-event-label.styles.scss';
 import { ICalendarEventLabelProps } from './calendar-event-label.types';
+
+import './calendar-event-label.styles.scss';
 
 const CalendarEventLabelComponent = ({
   className,

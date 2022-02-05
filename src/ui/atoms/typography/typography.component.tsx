@@ -1,8 +1,9 @@
 import classnames from 'classnames';
 import { ForwardedRef, forwardRef, memo } from 'react';
 
-import './typography.styles.scss';
 import { ITypographyProps } from './typography.types';
+
+import './typography.styles.scss';
 
 const TypographyComponent = (
   {

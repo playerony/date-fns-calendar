@@ -14,9 +14,10 @@ import { generateDatesArray, generateMonth, generateWeek, useDeviceDetect } from
 
 import { MEDIUM_SCREEN_BREAKPOINT } from '@infrastructure';
 
-import './calendar.styles.scss';
 import { ICalendarProps } from './calendar.types';
 import { DefaultCalendarHeader, DesktopCalendarCard, MobileCalendarCard } from './parts';
+
+import './calendar.styles.scss';
 
 const CalendarComponent = ({
   events,

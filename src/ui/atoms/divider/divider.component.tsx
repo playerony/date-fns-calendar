@@ -1,8 +1,9 @@
 import classnames from 'classnames';
 import { memo } from 'react';
 
-import './divider.styles.scss';
 import { IDividerProps } from './divider.types';
+
+import './divider.styles.scss';
 
 const DividerComponent = ({
   className,

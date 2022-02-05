@@ -1,8 +1,9 @@
 import classnames from 'classnames';
 import { ForwardedRef, forwardRef, memo } from 'react';
 
-import './paper.styles.scss';
 import { IPaperProps } from './paper.types';
+
+import './paper.styles.scss';
 
 const PaperComponent = (
   {

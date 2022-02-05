@@ -1,8 +1,9 @@
 import classnames from 'classnames';
 import { ForwardedRef, forwardRef, memo } from 'react';
 
-import './button.styles.scss';
 import { IButtonProps } from './button.types';
+
+import './button.styles.scss';
 
 const ButtonComponent = (
   {

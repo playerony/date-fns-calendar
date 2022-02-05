@@ -6,6 +6,7 @@ import { Button, Typography } from '@ui';
 import { getMonthNameById } from '@utils';
 
 import { ICalendarHeaderProps } from '../../calendar.types';
+
 import './default-calendar-header.styles.scss';
 
 export const DefaultCalendarHeader = ({
