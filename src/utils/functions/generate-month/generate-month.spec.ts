@@ -1,4 +1,4 @@
-import { generateMonth, functionImportTest } from '@utils';
+import { functionImportTest, generateMonth } from '@utils';
 
 describe('generateMonth function', () => {
   functionImportTest(generateMonth);

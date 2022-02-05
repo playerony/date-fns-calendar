@@ -1,10 +1,11 @@
 import classnames from 'classnames';
-import { memo, Children } from 'react';
 import { getDate, isToday, isWeekend } from 'date-fns';
+import { Children, memo } from 'react';
 
-import { Paper, Divider, Typography, CalendarEventLabel } from '@ui';
+import { CalendarEventLabel, Divider, Paper, Typography } from '@ui';
 
 import { ICalendarEvent } from '@interfaces';
+
 import { ICalendarCardProps } from '../../calendar.types';
 
 import './desktop-calendar-card.styles.scss';
@@ -12,9 +13,9 @@ import './desktop-calendar-card.styles.scss';
 const DesktopCalendarCardComponent = ({
   date,
   events,
-  selected,
-  sameMonth,
   onCalendarEventClick,
+  sameMonth,
+  selected,
   ...restProps
 }: ICalendarCardProps): JSX.Element => {
   const formattedDate = getDate(date).toString().padStart(2, '0');
@@ -27,8 +28,6 @@ const DesktopCalendarCardComponent = ({
 
   return (
     <Paper
-      shadow="sm"
-      padding="sm"
       className={classnames(
         'desktop-calendar-card-wrapper',
         today && 'desktop-calendar-card-wrapper--today',
@@ -36,6 +35,8 @@ const DesktopCalendarCardComponent = ({
         selected && 'desktop-calendar-card-wrapper--selected',
         !sameMonth && 'desktop-calendar-card-wrapper--other-month',
       )}
+      padding="sm"
+      shadow="sm"
       {...restProps}
     >
       <Typography as="h2" color="primary">

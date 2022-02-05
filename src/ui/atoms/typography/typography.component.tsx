@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import { memo, forwardRef, ForwardedRef } from 'react';
+import { ForwardedRef, forwardRef, memo } from 'react';
 
 import { ITypographyProps } from './typography.types';
 
@@ -7,20 +7,20 @@ import './typography.styles.scss';
 
 const TypographyComponent = (
   {
-    width,
-    strong,
-    italic,
-    pointer,
+    as = 'h5',
     children,
+    className,
+    color = 'black',
     disabled,
+    display = 'unset',
     ellipsis,
+    fontSize = 'default',
+    italic,
     maxWidth,
     minWidth,
-    className,
-    as = 'h5',
-    color = 'black',
-    display = 'unset',
-    fontSize = 'default',
+    pointer,
+    strong,
+    width,
     ...restProps
   }: ITypographyProps,
   ref: ForwardedRef<HTMLElement>,
@@ -32,7 +32,6 @@ const TypographyComponent = (
     <Component
       {...restProps}
       ref={ref}
-      style={{ width, maxWidth, minWidth }}
       className={classnames(
         'typography-wrapper',
         `typography-wrapper--variant-${as}`,
@@ -48,6 +47,7 @@ const TypographyComponent = (
         },
         className,
       )}
+      style={{ width, maxWidth, minWidth }}
     >
       {children}
     </Component>

@@ -3,5 +3,25 @@
   "useTabs": false,
   "printWidth": 100,
   "singleQuote": true,
-  "trailingComma": "all"
+  "trailingComma": "all",
+  "importOrder": [
+    "<THIRD_PARTY_MODULES>",
+    "^@application",
+    "^@application/(.*)$",
+    "^@domain",
+    "^@domain/(.*)$",
+    "^@ui",
+    "^@ui/(.*)$",
+    "^@utils",
+    "^@utils/(.*)$",
+    "^@infrastructure",
+    "^@infrastructure/(.*)$",
+    "^@enums",
+    "^@interfaces",
+    "^[./](?!.*(scss))",
+    ".scss$"
+  ],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true,
+  "importOrderGroupNamespaceSpecifiers": true
 }

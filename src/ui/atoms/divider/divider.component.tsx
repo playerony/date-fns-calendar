@@ -1,5 +1,5 @@
-import { memo } from 'react';
 import classnames from 'classnames';
+import { memo } from 'react';
 
 import { IDividerProps } from './divider.types';
 

@@ -1,7 +1,9 @@
 import { ReactNode } from 'react';
 
 export interface ITypographyProps {
-  id?: string;
+  as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'label' | 'span';
+  children?: ReactNode;
+  className?: string;
   color?:
     | 'none'
     | 'info'
@@ -15,19 +17,17 @@ export interface ITypographyProps {
     | 'success'
     | 'warning'
     | 'secondary';
-  width?: number;
-  htmlFor?: string;
-  strong?: boolean;
-  italic?: boolean;
-  minWidth?: number;
-  maxWidth?: number;
-  pointer?: boolean;
-  className?: string;
   disabled?: boolean;
-  ellipsis?: boolean;
-  onClick?: () => void;
-  children?: ReactNode;
   display?: 'unset' | 'block' | 'inline-block';
+  ellipsis?: boolean;
   fontSize?: 'default' | 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
-  as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'label' | 'span';
+  htmlFor?: string;
+  id?: string;
+  italic?: boolean;
+  maxWidth?: number;
+  minWidth?: number;
+  onClick?: () => void;
+  pointer?: boolean;
+  strong?: boolean;
+  width?: number;
 }

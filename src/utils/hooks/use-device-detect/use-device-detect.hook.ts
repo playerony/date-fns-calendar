@@ -1,9 +1,10 @@
-import { useState, useEffect } from 'react';
-
-import { IDeviceDetectData } from './use-device-detect-types';
-import { SMALL_SCREEN_BREAKPOINT, MOBILE_SCREEN_BREAKPOINT } from '@infrastructure/constants';
+import { useEffect, useState } from 'react';
 
 import { getWindowSize, useEventListener } from '@utils';
+
+import { MOBILE_SCREEN_BREAKPOINT, SMALL_SCREEN_BREAKPOINT } from '@infrastructure/constants';
+
+import { IDeviceDetectData } from './use-device-detect-types';
 
 const getDeviceData = () => {
   const { width } = getWindowSize();
@@ -20,6 +21,7 @@ export const useDeviceDetect = () => {
   const [deviceData, setDeviceData] = useState<IDeviceDetectData>(getDeviceData);
 
   const handleResize = () => setWindowSize(getWindowSize());
+
   useEventListener('resize', handleResize);
 
   useEffect(() => {

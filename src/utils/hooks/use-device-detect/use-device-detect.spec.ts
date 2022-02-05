@@ -1,4 +1,4 @@
-import { useDeviceDetect, functionImportTest } from '@utils';
+import { functionImportTest, useDeviceDetect } from '@utils';
 
 describe('useDeviceDetect hook', () => {
   functionImportTest(useDeviceDetect);

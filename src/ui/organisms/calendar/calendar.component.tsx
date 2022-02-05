@@ -1,21 +1,21 @@
-import {
-  addWeeks,
-  subWeeks,
-  addMonths,
-  subMonths,
-  isSameDay,
-  isWeekend,
-  isSameMonth,
-} from 'date-fns';
 import classnames from 'classnames';
-import { memo, Children, useState, useEffect, MouseEvent } from 'react';
+import {
+  addMonths,
+  addWeeks,
+  isSameDay,
+  isSameMonth,
+  isWeekend,
+  subMonths,
+  subWeeks,
+} from 'date-fns';
+import { Children, MouseEvent, memo, useEffect, useState } from 'react';
 
-import { MobileCalendarCard, DesktopCalendarCard, DefaultCalendarHeader } from './parts';
+import { generateDatesArray, generateMonth, generateWeek, useDeviceDetect } from '@utils';
 
 import { MEDIUM_SCREEN_BREAKPOINT } from '@infrastructure';
-import { generateWeek, generateMonth, generateDatesArray, useDeviceDetect } from '@utils';
 
 import { ICalendarProps } from './calendar.types';
+import { DefaultCalendarHeader, DesktopCalendarCard, MobileCalendarCard } from './parts';
 
 import './calendar.styles.scss';
 
@@ -98,6 +98,7 @@ const CalendarComponent = ({
     }
 
     const generatedDatesArray = generateDatesArray(selectionStartDate, date);
+
     setSelectedDates([selectionStartDate, ...generatedDatesArray, date]);
   };
 
@@ -109,14 +110,18 @@ const CalendarComponent = ({
   return (
     <div className="calendar-wrapper">
       <Header
+        className="calendar-wrapper__header"
         currentMonth={selectedDate}
         onLeftArrowClick={onLeftArrowClick}
-        className="calendar-wrapper__header"
         onRightArrowClick={onRightArrowClick}
       />
       <div
+        className={classnames(
+          'calendar-wrapper__calendar',
+          shouldRenderMobileCards && 'calendar-wrapper__calendar--mobile',
+          !shouldRenderMobileCards && displayWeekends && 'calendar-wrapper__calendar--weekends',
+        )}
         id="calendar-wrapper"
-        onMouseUp={onMouseUp}
         onMouseDown={(event) => {
           // @ts-expect-error
           if (event.target.id) {
@@ -124,11 +129,7 @@ const CalendarComponent = ({
             setSelectionStartDate(null);
           }
         }}
-        className={classnames(
-          'calendar-wrapper__calendar',
-          shouldRenderMobileCards && 'calendar-wrapper__calendar--mobile',
-          !shouldRenderMobileCards && displayWeekends && 'calendar-wrapper__calendar--weekends',
-        )}
+        onMouseUp={onMouseUp}
       >
         {Children.toArray(
           dataToProcess.map((_currentWeek) => (
@@ -136,6 +137,7 @@ const CalendarComponent = ({
               {Children.toArray(
                 _currentWeek.map((_currentDay) => {
                   const weekend = isWeekend(_currentDay);
+
                   if (weekend && !displayWeekends) {
                     return null;
                   }
@@ -147,13 +149,13 @@ const CalendarComponent = ({
                   return (
                     <CalendarCard
                       date={_currentDay}
-                      selected={selected}
-                      sameMonth={sameMonth}
-                      onMouseUp={onMouseUp}
                       events={currentDayEvents}
+                      sameMonth={sameMonth}
+                      selected={selected}
+                      onCalendarEventClick={onCalendarEventClick}
                       onMouseDown={onMouseDown(_currentDay)}
                       onMouseOver={onMouseOver(_currentDay)}
-                      onCalendarEventClick={onCalendarEventClick}
+                      onMouseUp={onMouseUp}
                     />
                   );
                 }),

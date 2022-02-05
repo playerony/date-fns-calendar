@@ -1,4 +1,4 @@
-import { generateWeek, functionImportTest } from '@utils';
+import { functionImportTest, generateWeek } from '@utils';
 
 describe('generateWeek function', () => {
   functionImportTest(generateWeek);
