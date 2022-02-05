@@ -16,7 +16,6 @@ export interface ICalendarCardProps extends HTMLAttributes<HTMLDivElement> {
   events: ICalendarEvent[];
   onCalendarEventClick?: (calendarEvent: ICalendarEvent) => void;
   sameMonth: boolean;
-
   selected: boolean;
 }
 
@@ -26,7 +25,6 @@ interface IComponents {
 
 export interface ICalendarProps {
   components?: IComponents;
-
   defaultSelectedDate?: Date;
   defaultSelectedDates?: Date[];
   displayWeekends?: boolean;
