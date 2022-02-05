@@ -4,9 +4,7 @@ import { ICalendarEvent } from '@interfaces';
 
 export interface ICalendarHeaderProps {
   className?: string;
-
   currentMonth: Date;
-
   onLeftArrowClick: () => void;
   onRightArrowClick: () => void;
 }
