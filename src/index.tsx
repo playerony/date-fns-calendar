@@ -1,12 +1,12 @@
-import ReactDOM from 'react-dom';
 import { StrictMode } from 'react';
+import ReactDOM from 'react-dom';
 
 import { App } from '@application';
 
-import reportWebVitals from './report-web-vitals';
-
-import '@infrastructure/styles/base/_reset.scss';
 import '@infrastructure/styles/base/_global.scss';
+import '@infrastructure/styles/base/_reset.scss';
+
+import reportWebVitals from './report-web-vitals';
 
 ReactDOM.render(
   <StrictMode>

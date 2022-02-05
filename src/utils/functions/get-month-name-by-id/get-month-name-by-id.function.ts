@@ -1,4 +1,4 @@
-import { isNumber, capitalize } from '@utils';
+import { capitalize, isNumber } from '@utils';
 
 import { EMonth } from '@enums';
 

@@ -18,7 +18,8 @@
     "^@infrastructure/(.*)$",
     "^@enums",
     "^@interfaces",
-    "^[./]"
+    "^[./]",
+    "^.*.scss$"
   ],
   "importOrderSeparation": true,
   "importOrderSortSpecifiers": true,

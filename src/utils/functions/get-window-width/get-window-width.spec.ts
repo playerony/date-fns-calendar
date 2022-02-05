@@ -1,4 +1,4 @@
-import { getWindowWidth, functionImportTest } from '@utils';
+import { functionImportTest, getWindowWidth } from '@utils';
 
 describe('getWindowWidth function', () => {
   functionImportTest(getWindowWidth);

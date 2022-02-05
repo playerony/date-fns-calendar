@@ -1,6 +1,6 @@
 import { addDays, startOfDay, startOfWeek } from 'date-fns';
 
-import { isDate, generateDatesArray } from '@utils';
+import { generateDatesArray, isDate } from '@utils';
 
 export const generateWeek = (date: Date = new Date()) => {
   if (!isDate(date)) {

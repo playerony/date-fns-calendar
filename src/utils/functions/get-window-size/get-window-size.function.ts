@@ -1,4 +1,4 @@
-import { getWindowWidth, getWindowHeight } from '@utils';
+import { getWindowHeight, getWindowWidth } from '@utils';
 
 export const getWindowSize = () => ({
   width: getWindowWidth(),

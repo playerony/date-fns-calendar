@@ -1,6 +1,6 @@
-import { addWeeks, endOfWeek, endOfMonth, startOfDay, startOfMonth } from 'date-fns';
+import { addWeeks, endOfMonth, endOfWeek, startOfDay, startOfMonth } from 'date-fns';
 
-import { isDate, generateWeek } from '@utils';
+import { generateWeek, isDate } from '@utils';
 
 function lastDayOfRange(range: Date[][]) {
   return range[range.length - 1][6];

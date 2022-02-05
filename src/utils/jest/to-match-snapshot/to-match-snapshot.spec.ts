@@ -1,4 +1,4 @@
-import { toMatchSnapshot, functionImportTest } from '../..';
+import { functionImportTest, toMatchSnapshot } from '../..';
 
 describe('toMatchSnapshot function', () => {
   functionImportTest(toMatchSnapshot);
